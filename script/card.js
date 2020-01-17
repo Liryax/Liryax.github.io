@@ -72,7 +72,14 @@ class Card{
 				ctx.fillStyle = "white"
 				
 				var cardText = lineSplit(cardThis.description)
-				ctx.font = "48px DTM-Mono";
+				
+				var fontSize = 48
+				
+				while(260/fontSize<cardText.length){
+					fontSize -= 2
+				}
+				
+				ctx.font = fontSize+"px DTM-Mono";
 				
 				// if(cardText.length>6){
 					// throw new Error("Exceed maximum 6 line number for cards with "+cardText.length+" lines")
@@ -105,7 +112,7 @@ class Card{
 						if(escaping == true){
 							
 							if(ch == "r"){
-								ctx.font = "48px DTM-Mono";
+								ctx.font = fontSize+"px DTM-Mono";
 								ctx.fillStyle = "white"
 							}else if(ch == "B"){
 								ctx.fillStyle = "#00FFFF"
@@ -124,7 +131,7 @@ class Card{
 						}
 						
 						
-						ctx.fillText(ch, currentX, 700-((cardText.length+1)/2-(i+1))*46); //line 1
+						ctx.fillText(ch, currentX, 700-((cardText.length+1)/2-(i+1))*fontSize); //line 1
 						currentX += charWidth
 						
 					}
